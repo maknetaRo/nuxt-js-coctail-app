@@ -1,28 +1,25 @@
 <template>
-  <div class="container-page">
-    <div class="coctail-list">
-      <Coctail
-        v-for="coctail in coctails"
-        :key="coctail.idDrink"
-        :id="coctail.idDrink"
-        :title="coctail.strDrink"
-        :recipe="coctail.strInstructions"
-        :image="coctail.strDrinkThumb"
-      />
-    </div>
+  <div id="random-cocktail">
+    <h2>Random Cocktail Recipe</h2>
+    <RandomCocktail
+      :key="random.idDrink"
+      :id="random.idDrink"
+      :title="random.strDrink"
+      :recipe="random.strInstructions"
+      :image="random.strDrinkThumb"
+      :category="random.strCategory"
+      :alco="random.strAlcoholic"
+    />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import Coctail from "../components/Coctail";
 export default {
-  components: {
-    Coctail,
-  },
+  name: "random-cocktail",
   data() {
     return {
-      coctails: [],
+      random: [],
     };
   },
   async created() {
@@ -33,11 +30,13 @@ export default {
     };
     try {
       const res = await axios.get(
-        "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=m",
+        "https://www.thecocktaildb.com/api/json/v1/1/random.php",
         config
       );
-      this.coctails = res.data.drinks;
-      console.log(res.data.drinks);
+      this.random = res.data.drinks[0];
+      console.log(res.data.drinks[0]);
+      console.log("This is random recipe");
+      console.log(this.random);
     } catch (err) {
       console.log(err);
     }
@@ -45,11 +44,14 @@ export default {
 };
 </script>
 
-<style>
-.coctail-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+<style scoped>
+h2 {
+  font-size: 2.25rem;
+  text-align: center;
+  padding: 1rem;
+  background: #35495e;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 </style>

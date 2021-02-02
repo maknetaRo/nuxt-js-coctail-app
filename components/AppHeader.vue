@@ -1,9 +1,12 @@
 <template>
   <header class="header">
-    <h1 class="title">Coctail Recipes</h1>
+    <h1 class="title">Cocktail Recipes</h1>
     <ul>
       <li>
-        <nuxt-link to="/">Coctails</nuxt-link>
+        <nuxt-link to="/">Home</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/coctails">Cocktails</nuxt-link>
       </li>
       <li>
         <nuxt-link to="/about">About</nuxt-link>

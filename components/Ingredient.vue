@@ -1,13 +1,17 @@
 <template>
   <div class="ingredient">
-    <p>{{ ingredient }}</p>
+    <ul>
+      <li v-for="ingredient in ingredients" v-bind:key="ingredient">
+        {{ ingredient }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Ingredient",
-  props: ["ingredient", "id"],
+  name: "ingredient",
+  props: ["ingredient"],
 };
 </script>
 

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <AppHeader />
+    <AlphabetList />
     <Nuxt />
   </div>
 </template>
